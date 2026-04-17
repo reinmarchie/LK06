@@ -1,44 +1,32 @@
-import java.util.*;
+import java.util.Date;
+import java.util.Scanner;
+
 public class Pegawai {
-    private static String nip;
-    private static String nama;
-    private static Date tanggalLahir;
+    private String nip;
+    private String nama;
+    private Date tanggalLahir;
 
     public Pegawai(String nip, String nama, Date tanggalLahir) {
-        Pegawai.nip = nip;
-        Pegawai.nama = nama;
-        Pegawai.tanggalLahir = tanggalLahir;
+        this.nip = nip;
+        this.nama = nama;
+        this.tanggalLahir = tanggalLahir;
     }
 
-    public void setNama(String nama) {
-        Pegawai.nama = nama;
-    }
-
-    public void setTanggalLahir(Date tanggalLahir) {
-        Pegawai.tanggalLahir = tanggalLahir;
-    }
-
-    public String getNip() {
-        return nip;
-    }
-
-    public String getNama() {
-        return nama;
-    }
-
-    public Date getTanggalLahir() {
-        return tanggalLahir;
-    }
-
-    public static String toFile() {
+    public String toFile() {
         return nip + "|" + nama + "|" + tanggalLahir.getTime();
     }
 
     public static void tambahPegawai() {
-        FileHelper.write("pegawai.txt", toFile());
-    }
+        Scanner input = new Scanner(System.in);
 
-    public static void tampilPegawai() {
-        FileHelper.read("pegawai.txt");
+        System.out.print("NIP: ");
+        String nip = input.nextLine();
+        System.out.print("Nama: ");
+        String nama = input.nextLine();
+
+        Date tgl = new Date();
+
+        Pegawai p = new Pegawai(nip, nama, tgl);
+        FileHelper.write("pegawai.txt", p.toFile());
     }
 }
