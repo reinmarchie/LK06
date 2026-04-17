@@ -17,7 +17,7 @@ public class Pegawai {
     }
 
     public static void tambahPegawai() {
-        Scanner input = new Scanner(System.in);
+        Scanner input = MainApp.input;
 
         System.out.print("NIP: ");
         String nip = input.nextLine();
