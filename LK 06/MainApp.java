@@ -1,8 +1,9 @@
 import java.io.File;
+import java.util.Scanner;
 
-public class Main {
+public class MainApp {
+    public static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
-
         System.out.println("    SISTEM PERPUSTAKAAN    ");
 
         try {
@@ -39,7 +40,7 @@ public class Main {
                 FileHelper.write("buku.txt", b1.toFile());
                 FileHelper.write("buku.txt", b2.toFile());
             }
-
+        //exception handling
         } catch (Exception e) {
             System.out.println("Error inisialisasi file");
         }
