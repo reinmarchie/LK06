@@ -1,20 +1,20 @@
 public class Siswa{
-    private static String nis;
-    private static String nama;
-    private static String alamat;
+    private String nis;
+    private String nama;
+    private String alamat;
 
     public Siswa(String nis, String nama, String alamat) {
-        Siswa.nis = nis;
-        Siswa.nama = nama;
-        Siswa.alamat = alamat;
+        this.nis = nis;
+        this.nama = nama;
+        this.alamat = alamat;
     }
 
-    public static void setNama(String nama) {
-        Siswa.nama = nama;
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
-    public static void setAlamat(String alamat) {
-        Siswa.alamat = alamat;
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
     }
 
     public String getNis() {
@@ -29,12 +29,22 @@ public class Siswa{
         return alamat;
     }
 
-    public static String toFile() {
+    public String toFile() {
         return nis + "|" + nama + "|" + alamat;
     }
 
     public static void tambahSiswa() {
-        FileHelper.write("siswa.txt", toFile());
+        java.util.Scanner input = new java.util.Scanner(System.in);
+
+        System.out.print("NIS: ");
+        String nis = input.nextLine();
+        System.out.print("Nama: ");
+        String nama = input.nextLine();
+        System.out.print("Alamat: ");
+        String alamat = input.nextLine();
+
+        Siswa s = new Siswa(nis, nama, alamat);
+        FileHelper.write("siswa.txt", s.toFile());
     }
 
     public static void tampilSiswa() {
