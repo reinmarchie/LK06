@@ -5,27 +5,29 @@ public class Admin {
     static Scanner input = new Scanner(System.in);
 
     public static boolean login() {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("pegawai.txt"));
+    try {
+        BufferedReader br = new BufferedReader(new FileReader("pegawai.txt"));
 
-            System.out.print("NIP: ");
-            String nip = input.nextLine();
-            System.out.print("Nama: ");
-            String nama = input.nextLine();
-            br.close();
+        System.out.print("NIP: ");
+        String nip = input.nextLine();
+        System.out.print("Nama: ");
+        String nama = input.nextLine();
 
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] d = line.split("\\|");
-                if (d[0].equals(nip) && d[1].equalsIgnoreCase(nama)) {
-                    return true;
-                }
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] d = line.split("\\|");
+            if (d[0].equals(nip) && d[1].equalsIgnoreCase(nama)) {
+                br.close();
+                return true;
             }
-        } catch (Exception e) {
-            System.out.println("Error login");
         }
-        return false;
+        br.close();
+
+    } catch (Exception e) {
+        System.out.println("Error login");
     }
+    return false;
+}
 
     //pilihan menu utama
     public static void menu() {
