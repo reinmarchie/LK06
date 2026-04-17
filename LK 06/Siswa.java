@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Siswa{
     private String nis;
     private String nama;
@@ -34,7 +35,7 @@ public class Siswa{
     }
 
     public static void tambahSiswa() {
-        java.util.Scanner input = new java.util.Scanner(System.in);
+        Scanner input = MainApp.input;
 
         System.out.print("NIS: ");
         String nis = input.nextLine();
@@ -45,9 +46,11 @@ public class Siswa{
 
         Siswa s = new Siswa(nis, nama, alamat);
         FileHelper.write("siswa.txt", s.toFile());
+        System.out.println("Siswa berhasil ditambahkan!");
     }
 
     public static void tampilSiswa() {
+        System.out.println("NIS | Nama | Alamat");
         FileHelper.read("siswa.txt");
     }
 }
